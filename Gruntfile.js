@@ -87,6 +87,14 @@ module.exports = function ( grunt ) {
       }
     },
 
+    uglify : {
+      main : {
+        files : {
+          'public/scripts/a-knob.js' : 'assets/scripts/a-knob.js'
+        }
+      }
+    },
+
     watch : {
       /* https://npmjs.org/package/grunt-contrib-watch */
 
@@ -109,12 +117,14 @@ module.exports = function ( grunt ) {
   grunt.loadNpmTasks( 'grunt-contrib-watch' );
   grunt.loadNpmTasks( 'grunt-contrib-compass' );
   grunt.loadNpmTasks( 'grunt-contrib-jshint' );
+  grunt.loadNpmTasks( 'grunt-contrib-uglify' );
 
   grunt.registerTask( 'dist', [
     'compass:clean',
     'compass:dist',
 
-    'jshint:dist'
+    'jshint:dist',
+    'uglify'
   ]);
 
   // grunt for development
@@ -122,7 +132,8 @@ module.exports = function ( grunt ) {
     'compass:clean',
     'compass:dev',
 
-    'jshint:dev'
+    'jshint:dev',
+    'uglify'
   ]);
 
   // grunt [default]
