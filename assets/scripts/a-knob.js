@@ -2,10 +2,6 @@
 var aKnob = ( function ( doc, undefined ) {
   'use strict';
 
-  function $( selector ) {
-    return doc.querySelectorAll( selector );
-  }
-
   function attr( el, attribute, val ) {
     if ( val !== undefined ) {
       return el.setAttribute( attribute, val );
@@ -170,7 +166,7 @@ var aKnob = ( function ( doc, undefined ) {
   }
 
   return function ( selector ) {
-    [].forEach.call( $( selector ),  function ( el ) {
+    [].forEach.call( doc.querySelectorAll( selector ),  function ( el ) {
       return add( el );
     });
   };

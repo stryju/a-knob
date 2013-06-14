@@ -105,6 +105,15 @@ form {
     @include transition( color 1s );
     // @include transform( translateZ( 0 ) );
 
+    &::selection {
+      color: #c30;
+      background: rgba( 255, 255, 255, .3 );
+    }
+    &::-moz-selection {
+      color: #c30;
+      background: rgba( 255, 255, 255, .3 );
+    }
+
     position: absolute;
 
     z-index: 2;
