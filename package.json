@@ -1,0 +1,16 @@
+{
+  "name": "a-knob",
+  "description": "a knob",
+  "version": "0.2.0",
+  "author": {
+    "name": "Tomasz Stryjewski",
+    "email": "stryjewski.t@gmail.com",
+    "url": "http://stryju.pl"
+  },
+  "devDependencies": {
+    "grunt": "~0.4.1",
+    "grunt-contrib-watch": "~0.4.3",
+    "grunt-contrib-compass": "~0.2.0",
+    "grunt-contrib-jshint": "~0.5.4"
+  }
+}

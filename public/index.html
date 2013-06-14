@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>a knob</title>
+  <link rel="stylesheet" href="styles/a-knob.css">
+
+<body>
+  <form>
+    <ul class="knobs">
+      <li class="a-knob">
+        <label class="a-knob-handle" for="knob-1"></label>
+        <input class="a-knob-input" type="number" id="knob-1" name="knob1" min="0" max="1000" value="115" step="1">
+        <div class="a-knob-indicator"></div>
+        <div class="a-knob-label"></div>
+      <li class="a-knob">
+        <label class="a-knob-handle" for="knob-2"></label>
+        <input class="a-knob-input" type="number" id="knob-2" name="knob2" min="0" max="225" value="116" step="1">
+        <div class="a-knob-indicator"></div>
+        <div class="a-knob-label mono"></div>
+      <li class="a-knob">
+        <label class="a-knob-handle" for="knob-3"></label>
+        <input class="a-knob-input" type="number" id="knob-3" name="knob3" min="100" max="500" value="114" step="2">
+        <div class="a-knob-indicator"></div>
+        <div class="a-knob-label blue"></div>
+      <li class="a-knob">
+        <label class="a-knob-handle" for="knob-4"></label>
+        <input class="a-knob-input" type="number" id="knob-4" name="knob4" min="-150" max="150" value="121" step="1">
+        <div class="a-knob-indicator"></div>
+        <div class="a-knob-label stripes"></div>
+      <li class="a-knob">
+        <label class="a-knob-handle" for="knob-5"></label>
+        <input class="a-knob-input" type="number" id="knob-5" name="knob5" min="-50" max="111" value="106" step="1">
+        <div class="a-knob-indicator"></div>
+        <div class="a-knob-label red"></div>
+    </ul>
+  </form>
+
+<script src="scripts/a-knob.js"></script>
