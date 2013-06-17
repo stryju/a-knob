@@ -2,11 +2,7 @@
 var aKnob = ( function ( doc, undefined ) {
   'use strict';
 
-  function attr( el, attribute, val ) {
-    if ( val !== undefined ) {
-      return el.setAttribute( attribute, val );
-    }
-
+  function attr( el, attribute ) {
     return el.getAttribute( attribute );
   }
 
@@ -19,10 +15,10 @@ var aKnob = ( function ( doc, undefined ) {
   }
 
   function inCircle( p, r ) {
-    var x = ( r - p.x );
-    var y = ( r - p.y );
+    var x = r - p.x;
+    var y = r - p.y;
 
-    return ( x * x ) + ( y * y ) <= r * r;
+    return x * x + y * y <= r * r;
   }
 
   function getEventPoint( ev, el ) {
@@ -94,10 +90,10 @@ var aKnob = ( function ( doc, undefined ) {
 
     var pressed = false;
 
-    function inputChange( ev ) {
+    function inputChange() {
       // ev.target.value;
 
-      var val = Math.max( min, Math.min( max, ev.target.value ) );
+      var val = Math.max( min, Math.min( max, $input.value ) );
       var prc = ( val - min ) / ( max - min );
 
       turnTheKnob( $indicator, 225 - 225 * prc );
@@ -106,13 +102,18 @@ var aKnob = ( function ( doc, undefined ) {
     function pointerChange( ev ) {
       var p = getEventPoint( ev, el );
 
-      // input - ignore
+      // input-related
       if ( /input/i.test( ev.target.nodeName )) {
+
+        // console.log( 'focus', ev.type );
 
         ev.stopPropagation();
         ev.stopImmediatePropagation();
 
-        ev.target.focus();
+        if ( ev.type === 'click' ) {
+          ev.target.focus();
+        }
+
         return ev;
       }
 
@@ -126,7 +127,7 @@ var aKnob = ( function ( doc, undefined ) {
       var deg = getDeg( p, r );
 
       turnTheKnob( $indicator, deg );
-      attr( $input, 'value', roundValue( min, max, step, ( 225 - deg ) / 225 ) );
+      $input.value = roundValue( min, max, step, ( 225 - deg ) / 225 );
     }
 
     inputChange({
@@ -161,6 +162,14 @@ var aKnob = ( function ( doc, undefined ) {
           ev.preventDefault();
           pointerChange( ev );
         }
+      },
+      'mousewheel wheel' : function ( ev ) {
+        var val      = parseInt( $input.value, 10 );
+        var modifier = ev.wheelDelta > 0 ? 1 : -1;
+
+        $input.value = Math.min( max, Math.max( min, val + modifier * step ) );
+
+        inputChange();
       }
     });
   }
